@@ -1,0 +1,41 @@
+{% extends "app/base.html" %}
+{% load staticfiles %}
+
+{%block content%}
+<a class='btn btn-primary js-create-group' href="{% url 'classifier-create' %}"> Создать </a> 
+<div class ='table-cont' style = "width:900px;">
+   	<table class="table" >
+   		<thead >
+   			<tr>
+            <th style = "width:50px">ID</th>
+             <th>Название</th>
+             <th style = "width:150px">Статус</th>
+   						
+   			</tr>
+   		</thead>
+
+   		<tbody>
+   		{% for classifier in classifiers %}
+   			<tr>
+               <td >
+                  {{classifier.id}}
+               </td>
+
+   				<td >
+                  <a href="{% url 'classifier-info' pk=classifier.id %}">{{classifier.name}}</a>
+   				</td>
+
+   				<td>
+   					{{classifier.status}}
+   				</td>
+		   	
+   			
+   			</tr>
+   		{% endfor %}
+   		</tbody>
+   	</table>
+   </div>
+
+
+
+{%endblock content%}
